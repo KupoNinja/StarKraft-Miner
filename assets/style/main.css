@@ -3,6 +3,9 @@ body {
 }
 
 #mineral {
-  /* height: 250px; */
   width: 300px;
+}
+
+.upgrade-count {
+  padding-left: 5px;
 }
