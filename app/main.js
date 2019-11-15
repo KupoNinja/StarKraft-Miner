@@ -35,6 +35,14 @@ let autoUpgrades = {
   }
 };
 
+//Testing Only
+function showMeTheMoney() {
+  minerals += 5000;
+  updateMineralCounter();
+}
+
+showMeTheMoney();
+
 function mine() {
   if (clickUpgrades.SCV.quantity > 0) {
     minerals += clickUpgrades.SCV.multiplier;
@@ -47,14 +55,6 @@ function mine() {
 function updateMineralCounter() {
   mineralCounter.innerText = minerals.toString();
 }
-
-//Testing Only
-function giveMinerals() {
-  minerals += 5000;
-  updateMineralCounter();
-}
-
-giveMinerals();
 
 //Need to disable button when there are not enough minerals
 function buySCV() {
