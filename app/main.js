@@ -37,6 +37,7 @@ let autoupgrades = {
 
 function mine() {
   minerals++;
+  // if ()
   updateMineralCounter();
 }
 
@@ -59,6 +60,8 @@ function buySCV() {
     minerals -= scv.price;
     updateMineralCounter();
     scv.quantity++;
+    //Create function to update upgrade quantity counts on index.html
+    scvCounter.innerText = scv.quantity.toString();
     scv.multiplier *= 1.2;
     scv.price = Math.ceil((scv.price + 50) * 1.2);
   }
