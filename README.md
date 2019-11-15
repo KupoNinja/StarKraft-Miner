@@ -9,3 +9,11 @@ Clone of http://orteil.dashnet.org/cookieclicker/.
 - Practice click events
 - Practice styling & Bootstrap
 - Practice, practice, practice
+
+### Goals
+
+1. Hide Upgrade buttons until user can afford at least once.
+
+2. Create Achievements.
+   - Create Player Object.
+   - Create Achievements List.
