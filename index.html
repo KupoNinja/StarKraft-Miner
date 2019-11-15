@@ -27,13 +27,15 @@
     <main class="row h-75 bg-secondary">
       <div class="col m-auto text-center">
         <h3><span id="mineral-counter">0</span></h3>
-        <img
-          id="mineral"
-          class="img-fluid rounded-circle shadow"
-          src="assets/img/starcraft-ii-minerals-3d-model.png"
-          alt=""
-          onclick="mine()"
-        />
+        <div class="view overlay zoom">
+          <img
+            id="mineral"
+            class="img-fluid rounded-circle shadow btn btn-info"
+            src="assets/img/starcraft-ii-minerals-3d-model.png"
+            alt=""
+            onclick="mine()"
+          />
+        </div>
         <div class="row pt-3">
           <div class="col">
             <button class="upgrades btn btn-danger shadow m-1">
