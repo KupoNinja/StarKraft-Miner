@@ -8,7 +8,7 @@ let ultraCounter = document.getElementById("ultralisk");
 let clickUpgrades = {
   SCV: {
     name: "SCV",
-    price: 50,
+    price: 25,
     quantity: 0,
     multiplier: 1
   },
@@ -41,8 +41,9 @@ function showMeTheMoney() {
   updateMineralCounter();
 }
 
-// showMeTheMoney();
+showMeTheMoney();
 
+// TODO Add Probe here
 function mine() {
   if (clickUpgrades.SCV.quantity > 0) {
     minerals += clickUpgrades.SCV.multiplier;
@@ -66,10 +67,40 @@ function buySCV() {
     //Create function to update upgrade quantity counts on index.html
     scvCounter.innerText = scv.quantity.toString();
     scv.multiplier += scv.quantity;
-    scv.price = Math.ceil((scv.price + 50) * 1.2);
+    scv.price = Math.ceil((scv.price + 25) * 1.1);
   }
 
   console.log(scv);
+}
+
+function buyProbe() {
+  let probe = clickUpgrades.Probe;
+  if (minerals >= probe.price) {
+    minerals -= probe.price;
+    updateMineralCounter();
+    probe.quantity++;
+    //Create function to update upgrade quantity counts on index.html
+    probeCounter.innerText = probe.quantity.toString();
+    probe.multiplier += probe.quantity;
+    probe.price = Math.ceil((probe.price + 25) * 1.1);
+  }
+
+  console.log(probe);
+}
+
+function buyReaver() {
+  let reaver = autoUpgrades.Reaver;
+  if (minerals >= reaver.price) {
+    minerals -= reaver.price;
+    updateMineralCounter();
+    reaver.quantity++;
+    //Create function to update upgrade quantity counts on index.html
+    reaverCounter.innerText = reaver.quantity.toString();
+    reaver.multiplier += reaver.quantity;
+    reaver.price = Math.ceil((reaver.price + 50) * 1.2);
+  }
+
+  console.log(reaver);
 }
 
 function buyUltralisk() {
