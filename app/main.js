@@ -41,7 +41,7 @@ function showMeTheMoney() {
   updateMineralCounter();
 }
 
-showMeTheMoney();
+// showMeTheMoney();
 
 function mine() {
   if (clickUpgrades.SCV.quantity > 0) {
