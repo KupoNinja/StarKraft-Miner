@@ -37,22 +37,34 @@
           />
         </div>
         <div class="row pt-3">
-          <div class="col">
-            <button class="upgrades btn btn-danger shadow m-1">
-              SCV: <span class="upgrade-count">x0</span>
+          <div class="col upgrades-section">
+            <button
+              class="upgrades btn btn-danger shadow m-1"
+              onclick="buySCV()"
+            >
+              SCV: <span id="scv" class="upgrade-count">x0</span>
             </button>
-            <button class="upgrades btn btn-light shadow m-1">
-              Probe: <span class="upgrade-count">x0</span>
+            <button
+              class="upgrades btn btn-light shadow m-1"
+              onclick="addUpgrade(probe)"
+            >
+              Probe: <span id="probe" class="upgrade-count">x0</span>
             </button>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <button class="upgrades btn btn-info shadow m-1">
-              Reaver: <span class="upgrade-count">x0</span>
+            <button
+              class="upgrades btn btn-info shadow m-1"
+              onclick="addUpgrade(reaver)"
+            >
+              Reaver: <span id="reaver" class="upgrade-count">x0</span>
             </button>
-            <button class="upgrades btn btn-success shadow m-1">
-              Ultralisk: <span class="upgrade-count">x0</span>
+            <button
+              class="upgrades btn btn-success shadow m-1"
+              onclick="addUpgrade(ultralisk)"
+            >
+              Ultralisk: <span id="ultralisk" class="upgrade-count">x0</span>
             </button>
           </div>
         </div>
