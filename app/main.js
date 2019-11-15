@@ -59,14 +59,13 @@ function updateMineralCounter() {
   mineralCounter.innerText = minerals.toString();
 }
 
-//Need to disable button when there are not enough minerals
 function buySCV() {
   let scv = clickUpgrades.SCV;
   if (minerals >= scv.price) {
     minerals -= scv.price;
     updateMineralCounter();
     scv.quantity++;
-    //Create function to update upgrade quantity counts on index.html
+    // TODO Create function to update upgrade quantity counts on index.html
     scvCounter.innerText = scv.quantity.toString();
     scv.multiplier += scv.quantity;
     scv.price = Math.ceil((scv.price + 25) * 1.1);
