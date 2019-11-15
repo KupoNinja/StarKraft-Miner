@@ -17,3 +17,5 @@ Clone of http://orteil.dashnet.org/cookieclicker/.
 2. Create Achievements.
    - Create Player Object.
    - Create Achievements List.
+
+_More to follow..._
