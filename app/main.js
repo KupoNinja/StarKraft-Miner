@@ -43,10 +43,12 @@ function showMeTheMoney() {
 
 showMeTheMoney();
 
-// TODO Add Probe here
 function mine() {
   if (clickUpgrades.SCV.quantity > 0) {
     minerals += clickUpgrades.SCV.multiplier;
+  }
+  if (clickUpgrades.Probe.quantity > 0) {
+    minerals += clickUpgrades.Probe.multiplier;
   } else {
     minerals++;
   }
@@ -68,6 +70,9 @@ function buySCV() {
     scvCounter.innerText = scv.quantity.toString();
     scv.multiplier += scv.quantity;
     scv.price = Math.ceil((scv.price + 25) * 1.1);
+    playSuccessSound(scv);
+  } else {
+    playFailSound(scv);
   }
 
   console.log(scv);
@@ -83,8 +88,10 @@ function buyProbe() {
     probeCounter.innerText = probe.quantity.toString();
     probe.multiplier += probe.quantity;
     probe.price = Math.ceil((probe.price + 25) * 1.1);
+    playSuccessSound(probe);
+  } else {
+    playFailSound(probe);
   }
-
   console.log(probe);
 }
 
@@ -98,8 +105,10 @@ function buyReaver() {
     reaverCounter.innerText = reaver.quantity.toString();
     reaver.multiplier += reaver.quantity;
     reaver.price = Math.ceil((reaver.price + 50) * 1.2);
+    playSuccessSound(reaver);
+  } else {
+    playFailSound(reaver);
   }
-
   console.log(reaver);
 }
 
@@ -113,6 +122,9 @@ function buyUltralisk() {
     ultraCounter.innerText = ultra.quantity.toString();
     ultra.multiplier += ultra.quantity;
     ultra.price = Math.ceil((ultra.price + 50) * 1.2);
+    playSuccessSound(ultra);
+  } else {
+    playFailSound(ultra);
   }
 
   console.log(ultra);
@@ -134,6 +146,40 @@ function startAutoCollectInterval() {
 }
 
 startAutoCollectInterval();
+
+function playFailSound(upgrade) {
+  if (upgrade == clickUpgrades.SCV) {
+    let audio = new Audio("assets/sound/Not-Enough-T.wav");
+    audio.play();
+  }
+  if (upgrade == clickUpgrades.Probe || upgrade == autoUpgrades.Reaver) {
+    let audio = new Audio("assets/sound/Not-Enough-P.wav");
+    audio.play();
+  }
+  if (upgrade == autoUpgrades.Ultralisk) {
+    let audio = new Audio("assets/sound/Not-Enough-Z.wav");
+    audio.play();
+  }
+}
+
+function playSuccessSound(upgrade) {
+  if (upgrade == clickUpgrades.SCV) {
+    let audio = new Audio("assets/sound/SCV-Ready.wav");
+    audio.play();
+  }
+  if (upgrade == clickUpgrades.Probe) {
+    let audio = new Audio("assets/sound/Probe-Ready.wav");
+    audio.play();
+  }
+  if (upgrade == autoUpgrades.Reaver) {
+    let audio = new Audio("assets/sound/Reaver-Ready.wav");
+    audio.play();
+  }
+  if (upgrade == autoUpgrades.Ultralisk) {
+    let audio = new Audio("assets/sound/Ultra-Ready.wav");
+    audio.play();
+  }
+}
 
 // function addUpgrade(upgradeName) {
 //     debugger;
