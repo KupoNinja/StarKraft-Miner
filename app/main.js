@@ -3,7 +3,7 @@ let mineralCounter = document.getElementById("mineral-counter");
 let scvCounter = document.getElementById("scv");
 let probeCounter = document.getElementById("probe");
 let reaverCounter = document.getElementById("reaver");
-let ultraliskCounter = document.getElementById("ultralisk");
+let ultraCounter = document.getElementById("ultralisk");
 
 let clickUpgrades = {
   SCV: {
@@ -41,7 +41,7 @@ function showMeTheMoney() {
   updateMineralCounter();
 }
 
-showMeTheMoney();
+// showMeTheMoney();
 
 function mine() {
   if (clickUpgrades.SCV.quantity > 0) {
@@ -68,9 +68,41 @@ function buySCV() {
     scv.multiplier += scv.quantity;
     scv.price = Math.ceil((scv.price + 50) * 1.2);
   }
-  console.log("purchased");
+
   console.log(scv);
 }
+
+function buyUltralisk() {
+  let ultra = autoUpgrades.Ultralisk;
+  if (minerals >= ultra.price) {
+    minerals -= ultra.price;
+    updateMineralCounter();
+    ultra.quantity++;
+    //Create function to update upgrade quantity counts on index.html
+    ultraCounter.innerText = ultra.quantity.toString();
+    ultra.multiplier += ultra.quantity;
+    ultra.price = Math.ceil((ultra.price + 50) * 1.2);
+  }
+
+  console.log(ultra);
+}
+
+function collectAutoUpgrade() {
+  for (const u in autoUpgrades) {
+    if (autoUpgrades.hasOwnProperty(u)) {
+      const upgrade = autoUpgrades[u];
+      minerals += upgrade.quantity * upgrade.multiplier;
+      updateMineralCounter();
+    }
+  }
+}
+
+function startAutoCollectInterval() {
+  let collectionInterval;
+  collectionInterval = setInterval(collectAutoUpgrade, 3000);
+}
+
+startAutoCollectInterval();
 
 // function addUpgrade(upgradeName) {
 //     debugger;
