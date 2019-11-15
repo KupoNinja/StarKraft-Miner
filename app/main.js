@@ -20,7 +20,7 @@ let clickUpgrades = {
   }
 };
 
-let autoupgrades = {
+let autoUpgrades = {
   Reaver: {
     name: "Reaver",
     price: 450,
@@ -36,8 +36,11 @@ let autoupgrades = {
 };
 
 function mine() {
-  minerals++;
-  // if ()
+  if (clickUpgrades.SCV.quantity > 0) {
+    minerals += clickUpgrades.SCV.multiplier;
+  } else {
+    minerals++;
+  }
   updateMineralCounter();
 }
 
@@ -62,7 +65,7 @@ function buySCV() {
     scv.quantity++;
     //Create function to update upgrade quantity counts on index.html
     scvCounter.innerText = scv.quantity.toString();
-    scv.multiplier *= 1.2;
+    scv.multiplier += scv.quantity;
     scv.price = Math.ceil((scv.price + 50) * 1.2);
   }
   console.log("purchased");
