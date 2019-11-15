@@ -9,6 +9,14 @@ let upgrades = {
   Probe: {
     name: "Probe",
     count: 0
+  },
+  Reaver: {
+    name: "Reaver",
+    count: 0
+  },
+  Ultralisk: {
+    name: "Ultralisk",
+    count: 0
   }
 };
 
