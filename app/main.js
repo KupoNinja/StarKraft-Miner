@@ -6,6 +6,8 @@ let reaverCounter = document.getElementById("reaver");
 let ultraCounter = document.getElementById("ultralisk");
 let scvCost = document.getElementById("scv-cost");
 let probeCost = document.getElementById("probe-cost");
+let reaverCost = document.getElementById("reaver-cost");
+let ultraCost = document.getElementById("ultra-cost");
 
 let clickUpgrades = {
   SCV: {
@@ -48,6 +50,8 @@ function showMeTheMoney() {
 function showUpgradeCost() {
   scvCost.innerText = clickUpgrades.SCV.price.toString();
   probeCost.innerText = clickUpgrades.Probe.price.toString();
+  reaverCost.innerText = autoUpgrades.Reaver.price.toString();
+  ultraCost.innerText = autoUpgrades.Ultralisk.price.toString();
 }
 
 showUpgradeCost();
@@ -70,15 +74,6 @@ function mine() {
 
 function updateMineralCounter() {
   mineralCounter.innerText = minerals.toString();
-}
-
-function updateUpgradeCost(upgrade) {
-  if (upgrade == clickUpgrades.SCV) {
-    scvCost.innerText = clickUpgrades.SCV.price.toString();
-  }
-  if (upgrade == clickUpgrades.Probe) {
-    probeCost.innerText = clickUpgrades.Probe.price.toString();
-  }
 }
 
 function buySCV() {
@@ -127,6 +122,7 @@ function buyReaver() {
     reaverCounter.innerText = reaver.quantity.toString();
     reaver.multiplier += reaver.quantity;
     reaver.price = Math.ceil((reaver.price + 50) * 1.2);
+    updateUpgradeCost(reaver);
     playSuccessSound(reaver);
   } else {
     playFailSound(reaver);
@@ -144,12 +140,28 @@ function buyUltralisk() {
     ultraCounter.innerText = ultra.quantity.toString();
     ultra.multiplier += ultra.quantity;
     ultra.price = Math.ceil((ultra.price + 50) * 1.2);
+    updateUpgradeCost(ultra);
     playSuccessSound(ultra);
   } else {
     playFailSound(ultra);
   }
 
   console.log(ultra);
+}
+
+function updateUpgradeCost(upgrade) {
+  if (upgrade == clickUpgrades.SCV) {
+    scvCost.innerText = clickUpgrades.SCV.price.toString();
+  }
+  if (upgrade == clickUpgrades.Probe) {
+    probeCost.innerText = clickUpgrades.Probe.price.toString();
+  }
+  if (upgrade == autoUpgrades.Reaver) {
+    reaverCost.innerText = autoUpgrades.Reaver.price.toString();
+  }
+  if (upgrade == autoUpgrades.Ultralisk) {
+    ultraCost.innerText = autoUpgrades.Ultralisk.price.toString();
+  }
 }
 
 function collectAutoUpgrade() {
@@ -202,26 +214,3 @@ function playSuccessSound(upgrade) {
     audio.play();
   }
 }
-
-// function addUpgrade(upgradeName) {
-//     debugger;
-//     for (const upgradeName in object) {
-//         if (object.hasOwnProperty(upgradeName)) {
-//             const element = object[upgradeName];
-
-//         }
-//     }
-
-//   if (upgradeName == "scv" || upgradeName == "probe") {
-//     let upgrade = clickUpgrades[upgradeName];
-//     upgrade.quantity++;
-//     console.log(upgrade.quantity);
-//   }
-//   if (upgradeName == "reaver" || upgradeName == "ultralisk") {
-//     let upgrade = clickUpgrades[upgradeName];
-//     upgrade.quantity++;
-//     console.log(upgrade.quantity);
-//   }
-// }
-
-// function updateUpgradeCounter() {}

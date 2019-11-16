@@ -27,7 +27,9 @@
     </header>
     <main class="row h-75 bg-secondary">
       <div class="col m-auto text-center">
-        <h3><span id="mineral-counter">0</span></h3>
+        <h3>
+          <span id="mineral-counter">0</span>
+        </h3>
         <div class="view overlay zoom">
           <img
             id="mineral"
@@ -45,26 +47,30 @@
               class="upgrades btn btn-danger shadow m-1"
               onclick="buySCV()"
             >
-              <img
-                id="mineral-upgrade-img"
-                class="img-fluid"
-                src="assets/img/mineral-rss.jpg"
-                alt="Tiny mineral icon"
-              />
-              <span id="scv-cost" class="pr-3"></span>
+              <div class="upgrade-cost px-3">
+                <img
+                  id="mineral-upgrade-img"
+                  class="img-fluid"
+                  src="assets/img/mineral-rss.jpg"
+                  alt="Tiny mineral icon"
+                />
+                <span id="scv-cost"></span>
+              </div>
               SCV: <span id="scv" class="upgrade-count">0</span>
             </button>
             <button
               class="upgrades btn btn-light shadow m-1"
               onclick="buyProbe()"
             >
-              <img
-                id="mineral-upgrade-img"
-                class="img-fluid"
-                src="assets/img/mineral-rss.jpg"
-                alt="Tiny mineral icon"
-              />
-              <span id="probe-cost" class="pr-3"></span>
+              <div class="upgrade-cost px-3">
+                <img
+                  id="mineral-upgrade-img"
+                  class="img-fluid"
+                  src="assets/img/mineral-rss.jpg"
+                  alt="Tiny mineral icon"
+                />
+                <span id="probe-cost"></span>
+              </div>
               Probe: <span id="probe" class="upgrade-count">0</span>
             </button>
           </div>
@@ -75,12 +81,30 @@
               class="upgrades btn btn-info shadow m-1"
               onclick="buyReaver()"
             >
+              <div class="upgrade-cost px-3">
+                <img
+                  id="mineral-upgrade-img"
+                  class="img-fluid"
+                  src="assets/img/mineral-rss.jpg"
+                  alt="Tiny mineral icon"
+                />
+                <span id="reaver-cost"></span>
+              </div>
               Reaver: <span id="reaver" class="upgrade-count">0</span>
             </button>
             <button
               class="upgrades btn btn-success shadow m-1"
               onclick="buyUltralisk()"
             >
+              <div class="upgrade-cost px-3">
+                <img
+                  id="mineral-upgrade-img"
+                  class="img-fluid"
+                  src="assets/img/mineral-rss.jpg"
+                  alt="Tiny mineral icon"
+                />
+                <span id="ultra-cost"></span>
+              </div>
               Ultralisk: <span id="ultralisk" class="upgrade-count">0</span>
             </button>
           </div>
