@@ -22,12 +22,7 @@
     <header class="row h-25 bg-dark text-light">
       <div class="col-8 text-center m-auto">
         <h1>StarKraft Miner</h1>
-        <audio
-          src="/assets/sound/Terran-One.mp3"
-          loop="true"
-          controls
-          autoplay
-        ></audio>
+        <audio src="/assets/sound/Terran-One.mp3" loop="true" controls></audio>
       </div>
     </header>
     <main class="row h-75 bg-secondary">
@@ -38,7 +33,7 @@
             id="mineral"
             class="img-fluid rounded-circle shadow btn btn-info"
             src="assets/img/starcraft-ii-minerals-3d-model.png"
-            alt=""
+            alt="Large Mineral"
             onclick="mine()"
           />
         </div>
@@ -50,6 +45,13 @@
               class="upgrades btn btn-danger shadow m-1"
               onclick="buySCV()"
             >
+              <img
+                id="mineral-upgrade-img"
+                class="img-fluid"
+                src="assets/img/mineral-rss.jpg"
+                alt="Tiny mineral icon"
+              />
+              <span id="scv-cost" class="pr-3"></span>
               SCV: <span id="scv" class="upgrade-count">0</span>
             </button>
             <button

@@ -4,6 +4,7 @@ let scvCounter = document.getElementById("scv");
 let probeCounter = document.getElementById("probe");
 let reaverCounter = document.getElementById("reaver");
 let ultraCounter = document.getElementById("ultralisk");
+let scvCost = document.getElementById("scv-cost");
 
 let clickUpgrades = {
   SCV: {
@@ -43,7 +44,15 @@ function showMeTheMoney() {
 
 // showMeTheMoney();
 
+function showUpgradeCost() {
+  scvCost.innerText = clickUpgrades.SCV.price.toString();
+}
+
+showUpgradeCost();
+
+// NOTE Is this adding 1 more to the multiplier?
 function mine() {
+  debugger;
   if (clickUpgrades.SCV.quantity > 0) {
     minerals += clickUpgrades.SCV.multiplier;
   }
@@ -59,6 +68,12 @@ function updateMineralCounter() {
   mineralCounter.innerText = minerals.toString();
 }
 
+function updateUpgradeCost(upgrade) {
+  if (upgrade == clickUpgrades.SCV) {
+    scvCost.innerText = clickUpgrades.SCV.price.toString();
+  }
+}
+
 function buySCV() {
   let scv = clickUpgrades.SCV;
   if (minerals >= scv.price) {
@@ -69,6 +84,7 @@ function buySCV() {
     scvCounter.innerText = scv.quantity.toString();
     scv.multiplier += scv.quantity;
     scv.price = Math.ceil((scv.price + 25) * 1.1);
+    updateUpgradeCost(scv);
     playSuccessSound(scv);
   } else {
     playFailSound(scv);
@@ -140,6 +156,7 @@ function collectAutoUpgrade() {
 }
 
 function startAutoCollectInterval() {
+  debugger;
   let collectionInterval;
   collectionInterval = setInterval(collectAutoUpgrade, 3000);
 }
