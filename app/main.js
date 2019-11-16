@@ -5,6 +5,7 @@ let probeCounter = document.getElementById("probe");
 let reaverCounter = document.getElementById("reaver");
 let ultraCounter = document.getElementById("ultralisk");
 let scvCost = document.getElementById("scv-cost");
+let probeCost = document.getElementById("probe-cost");
 
 let clickUpgrades = {
   SCV: {
@@ -46,19 +47,22 @@ function showMeTheMoney() {
 
 function showUpgradeCost() {
   scvCost.innerText = clickUpgrades.SCV.price.toString();
+  probeCost.innerText = clickUpgrades.Probe.price.toString();
 }
 
 showUpgradeCost();
 
-// NOTE Is this adding 1 more to the multiplier?
 function mine() {
-  debugger;
-  if (clickUpgrades.SCV.quantity > 0) {
+  let scv = clickUpgrades.SCV;
+  let probe = clickUpgrades.Probe;
+
+  if (scv.quantity > 0) {
     minerals += clickUpgrades.SCV.multiplier;
   }
-  if (clickUpgrades.Probe.quantity > 0) {
+  if (probe.quantity > 0) {
     minerals += clickUpgrades.Probe.multiplier;
-  } else {
+  }
+  if (scv.quantity == 0 && probe.quantity == 0) {
     minerals++;
   }
   updateMineralCounter();
@@ -72,6 +76,9 @@ function updateUpgradeCost(upgrade) {
   if (upgrade == clickUpgrades.SCV) {
     scvCost.innerText = clickUpgrades.SCV.price.toString();
   }
+  if (upgrade == clickUpgrades.Probe) {
+    probeCost.innerText = clickUpgrades.Probe.price.toString();
+  }
 }
 
 function buySCV() {
@@ -80,7 +87,6 @@ function buySCV() {
     minerals -= scv.price;
     updateMineralCounter();
     scv.quantity++;
-    // TODO Create function to update upgrade quantity counts on index.html
     scvCounter.innerText = scv.quantity.toString();
     scv.multiplier += scv.quantity;
     scv.price = Math.ceil((scv.price + 25) * 1.1);
@@ -103,6 +109,7 @@ function buyProbe() {
     probeCounter.innerText = probe.quantity.toString();
     probe.multiplier += probe.quantity;
     probe.price = Math.ceil((probe.price + 25) * 1.1);
+    updateUpgradeCost(probe);
     playSuccessSound(probe);
   } else {
     playFailSound(probe);
@@ -156,7 +163,6 @@ function collectAutoUpgrade() {
 }
 
 function startAutoCollectInterval() {
-  debugger;
   let collectionInterval;
   collectionInterval = setInterval(collectAutoUpgrade, 3000);
 }
