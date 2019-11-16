@@ -27,6 +27,12 @@
     </header>
     <main class="row h-75 bg-secondary">
       <div class="col m-auto text-center">
+        <!-- <img
+          id="mineral-counter-img"
+          class="img-fluid pr-3 justify-self-left"
+          src="assets/img/mineral-rss.jpg"
+          alt="Tiny mineral icon"
+        /> -->
         <h3>
           <span id="mineral-counter">0</span>
         </h3>
@@ -40,11 +46,10 @@
           />
         </div>
         <div class="row pt-3">
-          <!-- TODO Show prices -->
           <!-- TODO Show multiplier -->
           <div class="col upgrades-section">
             <button
-              class="upgrades btn btn-danger shadow m-1"
+              class="upgrades btn btn-success shadow m-1"
               onclick="buySCV()"
             >
               <div class="upgrade-cost px-3">
@@ -59,7 +64,7 @@
               SCV: <span id="scv" class="upgrade-count">0</span>
             </button>
             <button
-              class="upgrades btn btn-light shadow m-1"
+              class="upgrades btn btn-warning shadow m-1"
               onclick="buyProbe()"
             >
               <div class="upgrade-cost px-3">
