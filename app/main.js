@@ -8,6 +8,10 @@ let scvCost = document.getElementById("scv-cost");
 let probeCost = document.getElementById("probe-cost");
 let reaverCost = document.getElementById("reaver-cost");
 let ultraCost = document.getElementById("ultra-cost");
+let scvMultiplier = document.getElementById("scv-multiplier");
+let probeMultiplier = document.getElementById("probe-multiplier");
+let reaverMultiplier = document.getElementById("reaver-multiplier");
+let ultraMultiplier = document.getElementById("ultralisk-multiplier");
 
 let clickUpgrades = {
   SCV: {
@@ -84,6 +88,7 @@ function buySCV() {
     scv.quantity++;
     scvCounter.innerText = scv.quantity.toString();
     scv.multiplier += scv.quantity;
+    updateUpgradeMultiplier(scv);
     scv.price = Math.ceil((scv.price + 25) * 1.1);
     updateUpgradeCost(scv);
     playSuccessSound(scv);
@@ -103,6 +108,7 @@ function buyProbe() {
     //Create function to update upgrade quantity counts on index.html
     probeCounter.innerText = probe.quantity.toString();
     probe.multiplier += probe.quantity;
+    updateUpgradeMultiplier(probe);
     probe.price = Math.ceil((probe.price + 25) * 1.1);
     updateUpgradeCost(probe);
     playSuccessSound(probe);
@@ -121,6 +127,7 @@ function buyReaver() {
     //Create function to update upgrade quantity counts on index.html
     reaverCounter.innerText = reaver.quantity.toString();
     reaver.multiplier += reaver.quantity;
+    updateUpgradeMultiplier(reaver);
     reaver.price = Math.ceil((reaver.price + 50) * 1.2);
     updateUpgradeCost(reaver);
     playSuccessSound(reaver);
@@ -139,6 +146,7 @@ function buyUltralisk() {
     //Create function to update upgrade quantity counts on index.html
     ultraCounter.innerText = ultra.quantity.toString();
     ultra.multiplier += ultra.quantity;
+    updateUpgradeMultiplier(ultra);
     ultra.price = Math.ceil((ultra.price + 50) * 1.2);
     updateUpgradeCost(ultra);
     playSuccessSound(ultra);
@@ -161,6 +169,21 @@ function updateUpgradeCost(upgrade) {
   }
   if (upgrade == autoUpgrades.Ultralisk) {
     ultraCost.innerText = autoUpgrades.Ultralisk.price.toString();
+  }
+}
+
+function updateUpgradeMultiplier(upgrade) {
+  if (upgrade == clickUpgrades.SCV) {
+    scvMultiplier.innerText = clickUpgrades.SCV.multiplier.toString();
+  }
+  if (upgrade == clickUpgrades.Probe) {
+    probeMultiplier.innerText = clickUpgrades.Probe.multiplier.toString();
+  }
+  if (upgrade == autoUpgrades.Reaver) {
+    reaverMultiplier.innerText = autoUpgrades.Reaver.multiplier.toString();
+  }
+  if (upgrade == autoUpgrades.Ultralisk) {
+    ultraMultiplier.innerText = autoUpgrades.Ultralisk.multiplier.toString();
   }
 }
 

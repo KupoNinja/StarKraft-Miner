@@ -26,7 +26,7 @@
       </div>
     </header>
     <div class="row h-75 bg-secondary text-center">
-      <main class="col-md-8 bg-warning col-12">
+      <main class="col-md-8 bg-warning col-12 pb-3">
         <div class="row">
           <div class="col d-flex justify-content-center">
             <img
@@ -48,7 +48,7 @@
           />
         </div>
       </main>
-      <aside class="col-4 col text-light d-flex flex-column">
+      <aside class="col-md-4 col-12 col text-light d-flex flex-column">
         <div class="row">
           <button
             class="upgrades btn-block btn-success shadow"
@@ -61,6 +61,7 @@
             />
             <span id="scv-cost"></span>
             <p>SCV: <span id="scv" class="upgrade-count">0</span></p>
+            <p>+<span id="scv-multiplier">0</span> : per click</p>
           </button>
         </div>
         <div class="row">
@@ -75,6 +76,7 @@
             />
             <span id="probe-cost"></span>
             <p>Probe: <span id="probe" class="upgrade-count">0</span></p>
+            <p>+<span id="probe-multiplier">0</span> : per click</p>
           </button>
         </div>
         <div class="row">
@@ -89,6 +91,9 @@
             />
             <span id="reaver-cost"></span>
             <p>Reaver: <span id="reaver" class="upgrade-count">0</span></p>
+            <p>
+              +<span id="reaver-multiplier">0</span> : collected every 3 seconds
+            </p>
           </button>
         </div>
         <div class="row">
@@ -104,6 +109,10 @@
             <span id="ultra-cost"></span>
             <p>
               Ultralisk: <span id="ultralisk" class="upgrade-count">0</span>
+            </p>
+            <p>
+              +<span id="ultralisk-multiplier">0</span> : collected every 3
+              seconds
             </p>
           </button>
         </div>
