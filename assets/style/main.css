@@ -4,23 +4,19 @@ body {
 
 #mineral {
   user-select: none;
-  width: 300px;
+  width: 20em;
 }
 
 .mineral-upgrade-img {
-  height: 20px;
-  width: 20px;
+  height: 1rem;
+  width: 1rem;
 }
 
-/* #mineral-counter-img {
-  height: 50px;
-  width: 50px;
+#mineral-counter-img {
+  height: 2em;
+  width: 2em;
+}
+
+/* .upgrade-count {
+  padding-left: 3px;
 } */
-
-.upgrades {
-  width: 200px;
-}
-
-.upgrade-count {
-  padding-left: 5px;
-}
