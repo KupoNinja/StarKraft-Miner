@@ -13,7 +13,12 @@ let probeMultiplier = document.getElementById("probe-multiplier");
 let reaverMultiplier = document.getElementById("reaver-multiplier");
 let ultraMultiplier = document.getElementById("ultralisk-multiplier");
 
-// let upgradeCounterElements = [scvCounter, reaverCounter, ultraCounter];
+let upgradeCounterElements = [
+  scvCounter,
+  probeCounter,
+  reaverCounter,
+  ultraCounter
+];
 
 let clickUpgrades = {
   SCV: {
@@ -94,81 +99,60 @@ function updateMineralCounter() {
 //   });
 // }
 
-function buySCV() {
-  let scv = clickUpgrades.SCV;
-  if (minerals >= scv.price) {
-    minerals -= scv.price;
+// NOTE Code still duplicated with buyAutoUpgrade
+function buyClickUpgrade(upgrade) {
+  let cUpgrade = clickUpgrades[upgrade];
+  if (minerals >= cUpgrade.price) {
+    minerals -= cUpgrade.price;
     updateMineralCounter();
-    scv.quantity++;
-    scvCounter.innerText = scv.quantity.toString();
-    scv.multiplier += scv.quantity;
-    updateUpgradeMultiplier(scv);
-    scv.price = Math.ceil((scv.price + 25) * 1.1);
-    updateUpgradeCost(scv);
-    playSuccessSound(scv);
+    cUpgrade.quantity++;
+    updateUpgradeQuantity(cUpgrade);
+    cUpgrade.multiplier += cUpgrade.quantity;
+    updateUpgradeMultiplier(cUpgrade);
+    // TODO Method to calculate correct prices per upgrade. Using below for now.
+    cUpgrade.price = Math.ceil((cUpgrade.price + 25) * 1.1);
+    updateUpgradeCost(cUpgrade);
+    playSuccessSound(cUpgrade);
   } else {
-    playFailSound(scv);
+    playFailSound(cUpgrade);
   }
 
-  console.log(scv);
+  console.log(cUpgrade);
 }
 
-function buyProbe() {
-  let probe = clickUpgrades.Probe;
-  if (minerals >= probe.price) {
-    minerals -= probe.price;
+function buyAutoUpgrade(upgrade) {
+  let aUpgrade = autoUpgrades[upgrade];
+  if (minerals >= aUpgrade.price) {
+    minerals -= aUpgrade.price;
     updateMineralCounter();
-    probe.quantity++;
-    //Create function to update upgrade quantity counts on index.html
-    probeCounter.innerText = probe.quantity.toString();
-    probe.multiplier += probe.quantity;
-    updateUpgradeMultiplier(probe);
-    probe.price = Math.ceil((probe.price + 25) * 1.1);
-    updateUpgradeCost(probe);
-    playSuccessSound(probe);
+    aUpgrade.quantity++;
+    updateUpgradeQuantity(aUpgrade);
+    aUpgrade.multiplier += aUpgrade.quantity;
+    updateUpgradeMultiplier(aUpgrade);
+    // TODO Method to calculate correct prices per upgrade. Using below for now.
+    aUpgrade.price = Math.ceil((aUpgrade.price + 25) * 1.1);
+    updateUpgradeCost(aUpgrade);
+    playSuccessSound(aUpgrade);
   } else {
-    playFailSound(probe);
+    playFailSound(aUpgrade);
   }
-  console.log(probe);
+
+  console.log(aUpgrade);
 }
 
-function buyReaver() {
-  let reaver = autoUpgrades.Reaver;
-  if (minerals >= reaver.price) {
-    minerals -= reaver.price;
-    updateMineralCounter();
-    reaver.quantity++;
-    //Create function to update upgrade quantity counts on index.html
-    reaverCounter.innerText = reaver.quantity.toString();
-    reaver.multiplier += reaver.quantity;
-    updateUpgradeMultiplier(reaver);
-    reaver.price = Math.ceil((reaver.price + 50) * 1.2);
-    updateUpgradeCost(reaver);
-    playSuccessSound(reaver);
-  } else {
-    playFailSound(reaver);
+function updateUpgradeQuantity(upgrade) {
+  if (upgrade == clickUpgrades.SCV) {
+    scvCounter.innerText = clickUpgrades.SCV.quantity.toString();
   }
-  console.log(reaver);
-}
-
-function buyUltralisk() {
-  let ultra = autoUpgrades.Ultralisk;
-  if (minerals >= ultra.price) {
-    minerals -= ultra.price;
-    updateMineralCounter();
-    ultra.quantity++;
-    //Create function to update upgrade quantity counts on index.html
-    ultraCounter.innerText = ultra.quantity.toString();
-    ultra.multiplier += ultra.quantity;
-    updateUpgradeMultiplier(ultra);
-    ultra.price = Math.ceil((ultra.price + 50) * 1.2);
-    updateUpgradeCost(ultra);
-    playSuccessSound(ultra);
-  } else {
-    playFailSound(ultra);
+  if (upgrade == clickUpgrades.Probe) {
+    probeCounter.innerText = clickUpgrades.Probe.quantity.toString();
   }
-
-  console.log(ultra);
+  if (upgrade == autoUpgrades.Reaver) {
+    reaverCounter.innerText = autoUpgrades.Reaver.quantity.toString();
+  }
+  if (upgrade == autoUpgrades.Ultralisk) {
+    ultraCounter.innerText = autoUpgrades.Ultralisk.quantity.toString();
+  }
 }
 
 function updateUpgradeCost(upgrade) {
@@ -216,8 +200,7 @@ function collectAutoUpgrade() {
 }
 
 function startAutoCollectInterval() {
-  let collectionInterval;
-  collectionInterval = setInterval(collectAutoUpgrade, 3000);
+  let collectionInterval = setInterval(collectAutoUpgrade, 3000);
 }
 
 startAutoCollectInterval();
