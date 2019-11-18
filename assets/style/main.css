@@ -3,7 +3,7 @@ body {
 }
 
 header {
-  background-image: url("/assets/img/SC-BC-BG.jpg");
+  background-image: url("assets/img/SC-BC-BG.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   /* background-position: center; */

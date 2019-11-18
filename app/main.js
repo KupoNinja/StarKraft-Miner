@@ -13,6 +13,8 @@ let probeMultiplier = document.getElementById("probe-multiplier");
 let reaverMultiplier = document.getElementById("reaver-multiplier");
 let ultraMultiplier = document.getElementById("ultralisk-multiplier");
 
+// let upgradeCounterElements = [scvCounter, reaverCounter, ultraCounter];
+
 let clickUpgrades = {
   SCV: {
     name: "SCV",
@@ -42,6 +44,11 @@ let autoUpgrades = {
     multiplier: 100
   }
 };
+
+// let upgrades = {
+//   clickUpgrades,
+//   autoUpgrades
+// };
 
 //Testing Only
 function showMeTheMoney() {
@@ -79,6 +86,13 @@ function mine() {
 function updateMineralCounter() {
   mineralCounter.innerText = minerals.toString();
 }
+
+// TODO Optimize updating upgrade counter elements
+// function updateUpgradeCounter(upgrade) {
+//   upgradeCounterElements.forEach(element => {
+
+//   });
+// }
 
 function buySCV() {
   let scv = clickUpgrades.SCV;
