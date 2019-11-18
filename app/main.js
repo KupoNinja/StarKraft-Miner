@@ -194,10 +194,14 @@ function updateUpgradeMultiplier(upgrade) {
     probeMultiplier.innerText = clickUpgrades.Probe.multiplier.toString();
   }
   if (upgrade == autoUpgrades.Reaver) {
-    reaverMultiplier.innerText = autoUpgrades.Reaver.multiplier.toString();
+    let multiplierTotal =
+      autoUpgrades.Reaver.multiplier * autoUpgrades.Reaver.quantity;
+    reaverMultiplier.innerText = multiplierTotal.toString();
   }
   if (upgrade == autoUpgrades.Ultralisk) {
-    ultraMultiplier.innerText = autoUpgrades.Ultralisk.multiplier.toString();
+    let multiplierTotal =
+      autoUpgrades.Ultralisk.multiplier * autoUpgrades.Ultralisk.quantity;
+    ultraMultiplier.innerText = multiplierTotal.toString();
   }
 }
 
