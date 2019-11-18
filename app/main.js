@@ -13,11 +13,20 @@ let probeMultiplier = document.getElementById("probe-multiplier");
 let reaverMultiplier = document.getElementById("reaver-multiplier");
 let ultraMultiplier = document.getElementById("ultralisk-multiplier");
 
-let upgradeCounterElements = [
+let upgradeCounterElems = [
   scvCounter,
   probeCounter,
   reaverCounter,
   ultraCounter
+];
+
+let upgradeCostElems = [scvCost, probeCost, reaverCost, ultraCost];
+
+let upgradeMultiplierElems = [
+  scvMultiplier,
+  probeMultiplier,
+  reaverMultiplier,
+  ultraMultiplier
 ];
 
 let clickUpgrades = {
@@ -50,10 +59,10 @@ let autoUpgrades = {
   }
 };
 
-// let upgrades = {
-//   clickUpgrades,
-//   autoUpgrades
-// };
+let upgrades = {
+  clickUpgrades,
+  autoUpgrades
+};
 
 //Testing Only
 function showMeTheMoney() {
@@ -92,11 +101,33 @@ function updateMineralCounter() {
   mineralCounter.innerText = minerals.toString();
 }
 
+function parseUpgradeTypes(upgrade) {
+  for (const upgradeType in upgrades) {
+    if (upgrades.hasOwnProperty(upgradeType)) {
+      const uType = upgrades[upgradeType];
+      if (uType == clickUpgrades) {
+        //TODO Create method to parse through clickUpgrades
+      }
+      if (uType == clickUpgrades) {
+        //TODO Create method to parse through autoUpgrades
+      }
+    }
+  }
+}
+
+// TODO Parse upgrade
+function parseUpgrades(upgrade) {}
+
+//TODO Parse Elements
+function parseElements() {
+  //TODO
+}
+
 // TODO Optimize updating upgrade counter elements
 // function updateUpgradeCounter(upgrade) {
-//   upgradeCounterElements.forEach(element => {
-
-//   });
+//   // TODO Use parseUpgradeType to return the upgrade object here
+// TODO use parseElements to return the upgrade element here
+//   element.innerText = object.quantity.ToString();
 // }
 
 // NOTE Code still duplicated with buyAutoUpgrade
