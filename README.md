@@ -18,4 +18,10 @@ Clone of http://orteil.dashnet.org/cookieclicker/.
    - Create Player Object.
    - Create Achievements List.
 
+3. Add themes for each race.
+   - Buttons to choose themes for the game.
+   - Save User preferences in localStorage.
+   
+4. Encapsulate & Implement MVC pattern.  
+
 _More to follow..._
